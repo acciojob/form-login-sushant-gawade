@@ -1,26 +1,82 @@
 <!DOCTYPE html>
-
-<html>
-
+<html lang="en">
 <head>
-	<meta charset=utf-8 />
-		<title>Return first and last name from a form</title>
-		<style type="text/css">
-			body {margin: 30px;}
-		</style> 
-	<link rel="stylesheet" href="styles.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login Form</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #f0f0f0;
+            margin: 0;
+        }
+        .form-container {
+            background-color: white;
+            padding: 2em;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+        form {
+            display: flex;
+            flex-direction: column;
+            gap: 1em;
+        }
+        input[type="text"] {
+            padding: 0.8em;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            font-size: 1em;
+        }
+        input[type="submit"] {
+            padding: 0.8em;
+            border: none;
+            border-radius: 4px;
+            background-color: #007bff;
+            color: white;
+            font-size: 1em;
+            cursor: pointer;
+            transition: background-color 0.2s;
+        }
+        input[type="submit"]:hover {
+            background-color: #0056b3;
+        }
+    </style>
 </head>
-
 <body>
-	<form id="form1" onsubmit="getFormvalue()">
-		First name: <input type="text" name="fname"><br>
-		Last name: <input type="text" name="lname"><br>
-		<input type="submit" value="Submit">
-	</form>
-	
-    <script type="text/javascript" src="./script.js">
-</script>
+
+    <div class="form-container">
+        <h2>Login Form</h2>
+        <form onsubmit="getFormvalue(); return false;">
+            <p>
+                <label for="fname">First name:</label>
+                <input type="text" id="fname" name="fname">
+            </p>
+            <p>
+                <label for="lname">Last name:</label>
+                <input type="text" id="lname" name="lname">
+            </p>
+            <input type="submit" value="Submit">
+        </form>
+    </div>
+
+    <script>
+        function getFormvalue() {
+            const firstName = document.forms[0].fname.value.trim();
+            const lastName = document.forms[0].lname.value.trim();
+            const fullName = `${firstName} ${lastName}`.trim();
+
+            if (fullName) {
+                alert(fullName);
+            } else {
+                alert("Please enter a name.");
+            }
+        }
+    </script>
 
 </body>
-
 </html>
